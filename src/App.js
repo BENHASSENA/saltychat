@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react'
+import {auth, db} from './services/firebase'
+import{useAuthState} from 'react-firebase-hooks/auth'
+import {useCollectionData} from 'react-firebase-hooks/firestore'
+import SignIn from './components/SignIn'
+import SignOut from './components/SignOut'
+import Chat from './components/Chat'
+
 import './App.css';
 
 function App() {
+
+  const [user] = useAuthState(auth());
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+
+      <div className="App">
+        <header className="">Welcome to SaltyChat</header>
+        <SignOut/>
+      </div>
+
+      {user ? <Chat/> : <SignIn/>}
+
+    </section>
+
   );
 }
 
