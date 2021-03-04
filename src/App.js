@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {auth, db} from './services/firebase'
 import{useAuthState} from 'react-firebase-hooks/auth'
-import {useCollectionData} from 'react-firebase-hooks/firestore'
 import SignIn from './components/SignIn'
 import SignOut from './components/SignOut'
 import Chat from './components/Chat'
